@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 下面的配置信息指定基准路径是当前路径，默认target为空 -->
+<project name="webDemo" basedir="." default="" >
+
+	<property environment="env" />
+	<property name="src" value="src" />
+	<property name="classes" value="classes" />
+	<property name="dist" value="dist" />
+	<property name="lib" value="lib" />
+	<property name="java.lib.dir" value="${env.JAVA_HOME}/lib" />
+
+	<path id="classpath">
+		<!-- 系统CLASSPATH -->
+		<pathelement path="${env.CLASSPATH}" />
+		<!-- 项目用到的jar -->
+		<fileset dir="lib">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<target name="help" description="打印帮助信息">
+		<echo>help - 打印帮助信息</echo>
+		<echo>compile - 编译Java源文件</echo>
+		<echo>run - 运行程序</echo>
+		<echo>clean - 清除所有编译生成的文件</echo>
+		<echo>${env.CLASSPATH}</echo>
+	</target>
+
+	<target name="compile" description="编译Java源文件">
+		<delete dir="${classes}" />
+		<mkdir dir="${classes}" />
+		<javac destdir="${classes}" debug="true" includeantruntime="yes"
+			deprecation="false" optimize="false" failonerror="true" encoding="UTF-8">
+			<src path="${src}" />
+			<!-- 指定编译Java所需要的所有库文件 -->
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+
+	<target name="run" description="运行程序" depends="compile">
+		<!-- <java classname="ian.test.HelloTest" fork="yes" failonerror="true">
+			<classpath refid="classpath" />
+			<arg line="" />
+		</java> -->
+	</target>
+
+	<target name="build" description="打包Jar文件" depends="compile">
+		<delete dir="${dist}" />
+		<mkdir dir="${dist}" />
+		<jar destfile="${dist}/webDemo.jar" basedir="${classes}"
+			include="**/*.class">
+			<!-- <manifest>
+				<attribute name="Main-Class" value="ian.test.HelloTest" />
+			</manifest> -->
+		</jar>
+	</target>
+
+	<target name="clean" description="清除所有编译生成的文件">
+		<delete dir="${classes}" />
+		<delete dir="${dist}" />
+	</target>
+
+</project>
