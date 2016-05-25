@@ -6,5 +6,9 @@
 </head>
 <body>
 <%=request.getParameter("age")%>
+<%
+	String test = (String)request.getAttribute("info");
+	out.println(test);
+%>
 </body>
 </html>
