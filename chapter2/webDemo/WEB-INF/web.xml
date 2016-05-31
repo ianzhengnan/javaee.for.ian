@@ -66,4 +66,30 @@
     <listener-class>ian.AfterListener</listener-class>
   </listener> -->
 
+  <servlet>
+    <servlet-name>RestFullApi</servlet-name>
+    <servlet-class>ian.RestFullApiServlet</servlet-class>
+
+    <init-param>
+      <param-name>driver</param-name>
+      <param-value>com.mysql.jdbc.Driver</param-value>
+    </init-param>
+    <init-param>
+      <param-name>url</param-name>
+      <param-value>jdbc:mysql://localhost:3306/test</param-value>
+    </init-param>
+    <init-param>
+      <param-name>user</param-name>
+      <param-value>root</param-value>
+    </init-param>
+    <init-param>
+      <param-name>pass</param-name>
+      <param-value>1234567</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RestFullApi</servlet-name>
+    <url-pattern>/api/comments</url-pattern>
+  </servlet-mapping>
+
 </web-app>
