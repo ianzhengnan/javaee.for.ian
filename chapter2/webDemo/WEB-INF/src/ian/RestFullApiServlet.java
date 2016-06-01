@@ -9,6 +9,7 @@ import javax.servlet.ServletConfig;
 
 import java.io.PrintWriter;
 import java.io.IOException;
+import java.io.PrintStream;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -107,7 +108,11 @@ public class RestFullApiServlet extends HttpServlet{
 
 			JsonObject obj = Json.createObjectBuilder().add("status", "ok").build();
 
-			PrintWriter out = res.getWriter();
+			//方式一
+			// PrintWriter out = res.getWriter();
+			// out.println(obj.toString());
+			//方式二
+			PrintStream out = new PrintStream(res.getOutputStream());
 			out.println(obj.toString());
 
 		}catch(Exception e){
