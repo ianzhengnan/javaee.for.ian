@@ -23,7 +23,6 @@
 		<echo>compile - 编译Java源文件</echo>
 		<echo>run - 运行程序</echo>
 		<echo>clean - 清除所有编译生成的文件</echo>
-		<echo>${env.CLASSPATH}</echo>
 	</target>
 
 	<target name="compile" description="编译Java源文件">
