@@ -3,10 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>失败页面</title>
+	<title>Hello</title>
 </head>
 <body>
-${requestScope.tip}
-<s:property value="tip"/>
+<s:property value="username"/>
 </body>
 </html>

@@ -20,7 +20,7 @@
 		<delete dir="${classes}"/>
 		<mkdir dir="${classes}"/>
 		<javac destdir="${classes}" debug="true" includeantruntime="yes"
-			description="classes" optimize="false" failonerror="true">
+			description="classes" optimize="false" failonerror="true" encoding="UTF-8">
 
 			<src path="${src}"/>
 			<classpath refid="classpath"/>
