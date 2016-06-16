@@ -13,6 +13,9 @@
 		<fileset dir="lib">
 			<include name="**/*.jar"/>
 		</fileset>
+		<fileset dir="C:\Users\i076453\third-party-libs4java">
+			<include name="**/*.jar"/>
+		</fileset>
 	</path>
 
 	<target name="compile" description="编译Java源文件">

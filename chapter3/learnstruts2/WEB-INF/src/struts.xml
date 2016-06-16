@@ -30,6 +30,25 @@
 			</result>
 		</action>
 
+		<action name="uploadPro" class="com.ian.action.upload.UploadAction">
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">image/png,image/gif,image/jpeg</param>
+				<param name="maximumSize">5242880</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"/>
+			<param name="savePath">/uploadFiles</param>
+			<result>/WEB-INF/content/succ.jsp</result>
+			<result name="input">/upload.jsp</result>
+		</action>
+
+		<action name="download" class="com.ian.action.download.DownloadFileAction">
+			<param name="inputPath">\images\疯狂联盟.jpg</param>
+			<result name="success" type="stream">
+				<param name="inputName">targetFile</param>
+				<param name="contentDisposition">filename="wjc_logo.jpg"</param>
+			</result>
+		</action>
+		
 		<action name="">
 			<result>.</result>
 		</action>
