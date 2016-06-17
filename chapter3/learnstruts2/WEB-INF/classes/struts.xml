@@ -9,6 +9,15 @@
 	
 	<package name="ian" extends="struts-default" strict-method-invocation="false">
 
+		<interceptors>
+			<interceptor name="authority"
+				class="com.ian.action.interceptor.AuthorityInterceptor"/>
+		</interceptors>
+
+		<global-results>
+			<result name="login">/WEB-INF/content/login.jsp</result>
+		</global-results>
+
 		<action name="*Action" class="com.ian.struts.sample1.LoginAction" method="{1}">
 			<result name="input">/login.jsp</result>
 			<result name="error">/error.jsp</result>
@@ -48,10 +57,37 @@
 				<param name="contentDisposition">filename="wjc_logo.jpg"</param>
 			</result>
 		</action>
-		
-		<action name="">
-			<result>.</result>
+
+		<action name="viewBook">
+			<result>/WEB-INF/content/viewBook.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
 		</action>
 
+		<action name="loginPro" class="com.ian.action.ajax.LoginAction">
+			<result name="success" type="stream">
+				<param name="contentType">text/html; charset=utf-8</param>
+				<param name="inputName">result</param>
+			</result>
+			<result name="login">/WEB-INF/content/login.jsp</result>
+		</action>
+		
+		<!-- <action name="">
+			<result>.</result>
+		</action> -->
+
+		<action name="*">
+			<result>/WEB-INF/content/{1}.jsp</result>
+		</action>
+
+	</package>
+
+	<package name="example" extends="json-default">
+		<action name="jsonexample" class="com.ian.action.json.JSONExample">
+			<result type="json">
+				<param name="noCache">true</param>
+				<param name="contentType">text/html</param>
+			</result>
+		</action>
 	</package>
 </struts>
