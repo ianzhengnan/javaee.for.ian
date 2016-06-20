@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="web" basedir="." default="">
+
+	<property environment="env"/>
+	<property name="src" value="src"/>
+	<property name="classes" value="classes"/>
+	<property name="dist" value="dist"/>
+	<property name="lib" value="lib"/>
+	<property name="module" value="beforemodel"/>
+
+	<path id="classpath">
+		<pathelement path="${env.CLASSPATH}"/>
+		<fileset dir="lib">
+			<include name="**/*.jar"/>
+		</fileset>
+		<fileset dir="C:\Users\i076453\third-party-libs4java">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+
+	<target name="compile" description="编译Java源文件">
+
+		<delete dir="${classes}"/>
+		<mkdir dir="${classes}"/>
+		<javac destdir="${classes}" debug="true" includeantruntime="yes"
+			description="classes" optimize="false" failonerror="true" encoding="UTF-8">
+
+			<src path="${src}"/>
+			<classpath refid="classpath"/>
+		</javac>
+		<copy todir="${classes}">
+			<fileset dir="${src}">
+				<exclude name="**/*.java"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="build" depends="compile" description="打包Web模块">
+		<delete dir="${dist}"/>
+		<mkdir dir="${dist}"/>
+		<jar destfile="${dist}/${module}.jar"
+			basedir="${classes}"
+			excludes="**/*.java"/>
+	</target>
+</project>
