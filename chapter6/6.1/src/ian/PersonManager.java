@@ -25,15 +25,15 @@ public class PersonManager{
 		p.setAge(34);
 		session.save(p);
 		
-		// p.getAddresses().add(a1);
-		// Address a1 = new Address("申滨路1051弄100号304室");
-		// a1.setPerson(p);
-		// session.persist(a1);
+//		p.getAddresses().add(a1);
+		Address a1 = new Address("申滨路1051弄100号304室");
+		a1.setPerson(p);
+		session.persist(a1);
 
 
-		// Address a2 = new Address("申滨路1051弄100号304室");
-		// a2.setPerson(p);
-		// session.persist(a2);
+		Address a2 = new Address("申滨路1051弄152号1101室");
+		a2.setPerson(p);
+		session.persist(a2);
 
 		tx.commit();
 		HibernateUtil.closeSession();

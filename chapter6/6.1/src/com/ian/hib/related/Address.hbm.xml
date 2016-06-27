@@ -9,6 +9,6 @@
 			<generator class="identity"/>
 		</id>
 		<property name="addressDetail" type="string"/>
-		<!-- <many-to-one name="person" class="Person" column="person_id" not-null="true"/> -->
+		<many-to-one name="person" class="Person" column="person_id" not-null="true"/>
 	</class>
 </hibernate-mapping>
