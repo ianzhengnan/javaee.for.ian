@@ -1,6 +1,7 @@
 package ian;
 
 import com.ian.hib.related.Person;
+import com.ian.hib.test.HibernateUtil;
 import com.ian.hib.related.Address;
 
 import org.hibernate.Transaction;
