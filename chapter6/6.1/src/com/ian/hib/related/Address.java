@@ -3,7 +3,7 @@ package com.ian.hib.related;
 
 public class Address{
 
-	private Integer addressId;
+	private String addressId;
 	private String addressDetail;
 	private Person person;
 
@@ -13,10 +13,10 @@ public class Address{
 		this.addressDetail = addressDetail;
 	}
 
-	public void setAddressId(Integer addressId){
+	public void setAddressId(String addressId){
 		this.addressId = addressId;
 	}
-	public Integer getAddressId(){
+	public String getAddressId(){
 		return addressId;
 	}
 
