@@ -21,17 +21,17 @@ public class PersonManager{
 		Transaction tx = session.beginTransaction();
 
 		Person p = new Person();
-		p.setName("Ian");
-		p.setAge(34);
+		p.setName("Kaka");
+		p.setAge(30);
 		session.save(p);
 		
 //		p.getAddresses().add(a1);
-		Address a1 = new Address("申滨路1051弄100号304室");
+		Address a1 = new Address("申滨路1051弄123号304室");
 		a1.setPerson(p);
 		session.persist(a1);
 
 
-		Address a2 = new Address("申滨路1051弄152号1101室");
+		Address a2 = new Address("申滨路1051弄112号1101室");
 		a2.setPerson(p);
 		session.persist(a2);
 
