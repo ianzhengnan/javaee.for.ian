@@ -6,6 +6,12 @@
 	<classpathentry kind="src" path="chapter3/learnstruts2/WEB-INF/src"/>
 	<classpathentry kind="src" output="chapter3/restfullapi/WEB-INF/classes" path="chapter3/restfullapi/WEB-INF/src"/>
 	<classpathentry kind="src" output="chapter5/5.2/HibernateDemo/classes" path="chapter5/5.2/HibernateDemo/src"/>
+	<classpathentry kind="src" output="chapter6/6.4/HQL/classes" path="chapter6/6.4/HQL/src">
+		<attributes>
+			<attribute name="ignore_optional_problems" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="chapter6/6.3/classes" path="chapter6/6.3/src"/>
 	<classpathentry kind="src" output="chapter6/6.2/classes" path="chapter6/6.2/src"/>
 	<classpathentry kind="src" output="chapter6/6.1/classes" path="chapter6/6.1/src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>

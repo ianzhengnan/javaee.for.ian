@@ -1,43 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC
-	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-	
-<hibernate-mapping package="com.ian.hib.domain">
-	<class name="Person" table="person_inf" discriminator-value="普通人">
-		<id name="id" column="person_id">
-			<generator class="identity"/>
-		</id>
-		<discriminator column="disc" type="string"></discriminator>
-		<property name="name" length="80"/>
-		<property name="gender" />
-		<component name="address">
-			<property name="detail"/>
-			<property name="zip"/>
-			<property name="country"/>
-		</component>
-		
-		<subclass name="Employee" discriminator-value="雇员">
-			<property name="title"/>
-			<property name="salary"/>
-			<many-to-one name="manager" column="manager_id"/>
-			<set name="customers" inverse="true">
-				<key column="employee_id"/>
-				<one-to-many class="Customer"/>
-			</set>
-			<subclass name="Manager" discriminator-value="经理">
-				<property name="department"/>
-				<set name="employees" inverse="true">
-					<key column="manager_id"/>
-					<one-to-many class="Employee"/>
-				</set>
-			</subclass>
-		</subclass>
-		
-		<subclass name="Customer" discriminator-value="顾客">
-			<property name="comments"/>
-			<many-to-one name="employee" column="employee_id"/>
-		</subclass>
-		
-	</class>
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 29, 2016 2:07:09 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.ian.hib.domain.Person" table="PERSON">
+        <id name="id" type="java.lang.String">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="gender" type="char">
+            <column name="GENDER" />
+        </property>
+        <many-to-one name="address" class="com.ian.hib.domain.Address" fetch="join">
+            <column name="ADDRESS" />
+        </many-to-one>
+    </class>
 </hibernate-mapping>

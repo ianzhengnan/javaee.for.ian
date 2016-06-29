@@ -2,15 +2,15 @@ package com.ian.hib.domain;
 
 public class Person {
 
-	private Integer id;
+	private String id;
 	private String name;
 	private char gender;
 	private Address address;
 	
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getName() {
