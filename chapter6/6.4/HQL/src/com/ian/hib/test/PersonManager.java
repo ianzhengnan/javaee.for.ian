@@ -34,6 +34,8 @@ public class PersonManager {
 				+ "p.myEvents")
 				.list();
 		
+		System.out.println(pList);
+		
 		for (Iterator pIterator = pList.iterator(); pIterator.hasNext();) {
 			Object[] objs = (Object[])pIterator.next();
 			System.out.println(java.util.Arrays.toString(objs));
@@ -63,6 +65,8 @@ public class PersonManager {
 				.setDate("endDate", new Date())
 				.list();
 		
+		System.out.println(pList);
+		
 		//遍历结果
 		for (Iterator pIterator = pList.iterator(); pIterator.hasNext();) {
 			Person person = (Person)pIterator.next();
@@ -83,16 +87,28 @@ public class PersonManager {
 		Session session = HibernateUtil.currentSession();
 		Transaction tx = session.beginTransaction();
 		
-		List pList = session.createQuery("select distinct p from Person p "
+		/*List pList = session.createQuery("select distinct p.name from Person p "
 				+ "join p.myEvents where title = :eventTitle")
 				.setString("eventTitle", "很普通事情")
 //				.setFirstResult(2)
 //				.setMaxResults(1)
 				.list();
+		
+		System.out.println(pList);
 		for(Iterator pit = pList.iterator(); pit.hasNext();){
-			Person person = (Person)pit.next();
-			System.out.println(person.getName() + " : " + person.getEmails());
-		}
+//			Person person = (Person)pit.next();
+			String personName = (String)pit.next();
+			System.out.println(personName);
+//			System.out.println(person.getName() + " : " + person.getEmails());
+		}*/
+		
+//		List pList = session.createQuery("select max(p.age) from Person p")
+//				.list();
+		
+		List pList = session.createQuery("select p.name || '-' || p.age from Person p")
+				.list();
+		
+		System.out.println(pList);
 		
 		try{
 			tx.commit();
