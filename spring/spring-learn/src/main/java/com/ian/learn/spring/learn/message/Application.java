@@ -1,4 +1,4 @@
-package com.ian.learn.spring.learn;
+package com.ian.learn.spring.learn.message;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
