@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+
+	<bean id="stoneAxe" class="com.ian.spring.service.StoneAxe"/>
+	<bean id="steelAxe" class="com.ian.spring.service.SteelAxe"/>
+	
+	<bean id="chinese" class="com.ian.spring.service.Chinese">
+		<property name="schools">
+			<list>
+				<value>大学</value>
+				<value>中学</value>
+				<value>小学</value>
+			</list>
+		</property>
+		<property name="scores">
+			<map>
+				<entry key="数学" value="87"/>
+				<entry key="语文" value="87"/>
+				<entry key="英语" value="87"/>
+			</map>
+		</property>
+		<property name="phaseAxes">
+			<map>
+				<entry key="原始社会" value-ref="stoneAxe"/>
+				<entry key="农业社会" value-ref="stoneAxe"/>
+			</map>
+		</property>
+		<property name="health">
+			<value>
+				pressure=normal
+				height=185
+			</value>
+		</property>
+		<property name="axes">
+			<set>
+				<value>普通的字符串</value>
+				<bean class="com.ian.spring.service.StoneAxe"/>
+				<ref local="stoneAxe"/>
+			</set>
+		</property>
+		<property name="books">
+			<list>
+				<value>Struts2 权威指南</value>
+				<value>轻量级javaee企业级应用实战</value>
+				<value>疯狂java讲义</value>
+			</list>
+		</property>
+	</bean>
+</beans>
