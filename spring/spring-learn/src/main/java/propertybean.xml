@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<bean id="person" class="com.ian.learn.spring.learn.deep.Person" p:age="22">
+		<property name="son">
+			<bean class="com.ian.learn.spring.learn.deep.Son">
+				<property name="age" value="11"/>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="son1" class="org.springframework.beans.factory.config.PropertyPathFactoryBean">
+		<property name="targetBeanName" value="person"/>
+		<property name="propertyPath" value="son"/>
+	</bean>
+	
+	<bean id="son2" class="com.ian.learn.spring.learn.deep.Son">
+		<property name="age">
+			<bean id="person.son.age" class="org.springframework.beans.factory.config.PropertyPathFactoryBean"/>
+		</property>
+	</bean>
+	
+	<bean id="theAge" class="org.springframework.beans.factory.config.PropertyPathFactoryBean">
+		<property name="targetBeanName" value="person"/>
+		<property name="propertyPath" value="son.age"/>
+	</bean>
+	
+	<bean id="theAge2" class="org.springframework.beans.factory.config.PropertyPathFactoryBean">
+		<property name="targetObject">
+			<bean class="com.ian.learn.spring.learn.deep.Person">
+				<property name="age" value="30"/>
+			</bean>
+		</property>
+		<property name="propertyPath" value="age"/>
+	</bean>
+	
+</beans>

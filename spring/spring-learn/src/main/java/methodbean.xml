@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<bean id="valueGenerator" class="com.ian.learn.spring.learn.deep.ValueGenerator"/>
+	
+	<bean id="son" class="com.ian.learn.spring.learn.deep.Son">
+		<property name="age">
+			<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+				<property name="targetObject" ref="valueGenerator"/>
+				<property name="targetMethod" value="getValue"/>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="son2" class="com.ian.learn.spring.learn.deep.Son">
+		<property name="age">
+			<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+				<property name="targetClass" value="com.ian.learn.spring.learn.deep.ValueGenerator"/>
+				<property name="targetMethod" value="getStaticValue"/>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="sysProps" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetClass" value="java.lang.System"/>
+		<property name="targetMethod" value="getProperties"/>
+	</bean>
+	
+	<bean id="javaVersion" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetObject" ref="sysProps"/>
+		<property name="targetMethod" value="getProperty"/>
+		<property name="arguments">
+			<list>
+				<value>java.version</value>
+			</list>
+		</property>
+	</bean>
+</beans>
