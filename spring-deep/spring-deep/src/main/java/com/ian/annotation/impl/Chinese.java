@@ -4,6 +4,8 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
@@ -18,7 +20,11 @@ public class Chinese implements Person{
 
 	private String name;
 	@Resource(name = "steelAxe")
+//	@Qualifier("steelAxe")
 	private Axe axe;
+	
+	@Autowired
+	private Axe[] axes;
 	
 	public String getName() {
 		return name;
@@ -38,6 +44,8 @@ public class Chinese implements Person{
 
 	public void useAxe(){
 		System.out.println(name + "  " + axe.chop());
+		System.out.println(axes);
+		
 	}
 	
 	@PostConstruct
