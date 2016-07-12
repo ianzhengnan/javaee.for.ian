@@ -48,13 +48,22 @@ public class Chinese implements Person{
 		
 	}
 	
-	@PostConstruct
-	public void initial(){
-		System.out.println("正在执行初始化方法    initial...");
+//	@PostConstruct
+//	public void initial(){
+//		System.out.println("正在执行初始化方法    initial...");
+//	}
+//	
+//	@PreDestroy
+//	public void close(){
+//		System.out.println("正在执行关闭方法   close...");
+//	}
+	
+	public String sayHello(String name){
+		System.out.println("sayHello方法被执行了");
+		return name + " Hello , Spring AOP";
 	}
 	
-	@PreDestroy
-	public void close(){
-		System.out.println("正在执行关闭方法   close...");
+	public void eat(String food){
+		System.out.println("我正在吃：" + food);
 	}
 }

@@ -9,10 +9,10 @@ import com.ian.annotation.service.Axe;
 @Component
 public class SteelAxe implements Axe{
 
-	@PostConstruct
-	public void init(){
-		System.out.println("正在初始化steelAxe...");
-	}
+//	@PostConstruct
+//	public void init(){
+//		System.out.println("正在初始化steelAxe...");
+//	}
 	
 	public String chop(){
 		return "钢斧砍柴好快";

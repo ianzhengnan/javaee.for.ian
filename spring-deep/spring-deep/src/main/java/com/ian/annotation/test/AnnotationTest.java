@@ -9,11 +9,13 @@ public class AnnotationTest {
 
 	public static void main(String[] args) {
 		
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("annotationbean.xml");
-		System.out.println("----------------" + java.util.Arrays.toString(ctx.getBeanDefinitionNames()));
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("aopbean1.xml");
+//		System.out.println("----------------" + java.util.Arrays.toString(ctx.getBeanDefinitionNames()));
 		
 		Person person = ctx.getBean("chinese", Person.class);
-		person.useAxe();
+//		person.useAxe();
 		
+		System.out.println(person.sayHello("王二麻子"));
+		person.eat("羊肉泡馍");
 	}
 }
