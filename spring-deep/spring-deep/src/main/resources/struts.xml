@@ -8,10 +8,24 @@
 	<constant name="struts.devMode" value="true"/>
 	
 	<package name="ian" extends="struts-default">
-		<action name="loginAction" class="loginAction">
+		<!-- 手工方式，只需指定bean的id, 优点：没有代码层次的耦合。缺点：配置工作量大 -->
+		<!-- <action name="loginAction" class="loginAction"> -->
+		<!-- autowire方式， 配置方式跟普通struts2没有区别 ，优点：配置工作量小。缺点：有代码层面的耦合-->
+		<action name="loginAction" class="com.ian.spring.struts.action.LoginAction">
 			<result name="success">welcome.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
+		
+		<action name="registAction" class="com.ian.spring.app.action.RegistAction">
+			<result name="success">welcome.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
+		<action name="regAction" class="com.ian.spring.app.jpa.action.RegistAction">
+			<result name="success">welcome.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
 		<action name="*">
 			<result>{1}.jsp</result>
 		</action>

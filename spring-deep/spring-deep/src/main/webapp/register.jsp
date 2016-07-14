@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>用户登录</title>
+	<title>用户注册</title>
 </head>
 
 <body>
 	<div>
-		<form method="post" action="loginAction">
-			用户名：<input name="username" type="text" /><br/>
-			密码：<input name="password" type="password" /><br/>
+		<form method="post" action="regAction">
+			用户名：<input name="person.name" type="text"/><br/>
+			年龄：<input name="person.age" type="text"/><br/>
 			<input type="submit" value="提交"/>
 		</form>
 	</div>

@@ -21,31 +21,48 @@
 		<property name="maxIdleTime" value="20"/>
 	</bean>
 	
-	<bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="jpaVendorAdapter">
-			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-				<property name="showSql" value="true"/>
-				<property name="database" value="MYSQL"/>
-			</bean>
+		<property name="mappingResources">
+			<list>
+				<value>com/ian/spring/app/domain/Person.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<value>
+				hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
+				hibernate.hbm2ddl.auto=update
+				hibernate.show_sql=true
+				hibernate.format_sql=true
+			</value>
 		</property>
 	</bean>
-
-	<bean id="personDao" class="com.ian.spring.app.jpa.dao.impl.PersonDaoJpa">
-		<property name="emf" ref="emf"/>
+	
+	<bean id="personDao" class="com.ian.spring.app.dao.impl.PersonDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
-	<bean id="authService" class="com.ian.spring.app.jpa.service.impl.RegistServiceImpl">
+	<bean id="authService" class="com.ian.spring.app.service.impl.RegistServiceImpl">
 		<property name="personDao" ref="personDao"/>
 	</bean>
 	
 	<bean id="myService" class="com.ian.spring.struts.service.impl.MyServiceImpl"/>
 	
-	<bean id="transManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-		<property name="entityManagerFactory" ref="emf"/>
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
-	<tx:annotation-driven transaction-manager="transManager" />
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="*"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<aop:pointcut expression="bean(authService)" id="authPointcut"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="authPointcut"/>
+	</aop:config>
 	
 	<!-- autowire方式，不需要配置下面的action bean。 代码层面耦合 -->
 	<!-- <bean id="loginAction" class="com.ian.spring.struts.action.LoginAction" scope="prototype">
