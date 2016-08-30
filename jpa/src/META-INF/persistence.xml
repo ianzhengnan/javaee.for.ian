@@ -8,6 +8,7 @@
 	
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>com.ian.jpa.first.News</class>
+		<class>com.ian.jpa.big.Person</class>
 		<properties>
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/javaee"/>
