@@ -35,7 +35,7 @@ public class PersonDaoJpa implements PersonDao{
 	
 	public Person get(Integer id) {
 
-		return getEm().find(Person.class, id);
+		return em.find(Person.class, id);
 	}
 
 	public Integer save(Person person) {

@@ -55,9 +55,9 @@
 		  <version>1.8.9</version>
 		</dependency>
 		<dependency>
-		  <groupId>com.mchange.c3p0</groupId>
-		  <artifactId>com.springsource.com.mchange.v2.c3p0</artifactId>
-		  <version>0.9.1.2</version>
+		    <groupId>com.mchange</groupId>
+		    <artifactId>c3p0</artifactId>
+		    <version>0.9.2.1</version>
 		</dependency>
 		<dependency>
 		  <groupId>mysql</groupId>
@@ -73,6 +73,16 @@
 		  <groupId>org.apache.struts</groupId>
 		  <artifactId>struts2-core</artifactId>
 		  <version>2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-rest-plugin</artifactId>
+			<version>2.5</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.struts</groupId>
+		    <artifactId>struts2-convention-plugin</artifactId>
+		    <version>2.5</version>
 		</dependency>
 		<dependency>
 		  <groupId>org.hibernate</groupId>

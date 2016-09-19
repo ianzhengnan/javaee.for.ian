@@ -7,6 +7,23 @@
 	<constant name="struts.i18n.encoding" value="utf-8"/>
 	<constant name="struts.devMode" value="true"/>
 	
+	<constant name="struts.action.extension" value="xhtml,,xml,json,action"/>
+	
+	<constant name="struts.convention.action.suffix" value="Controller"/>
+	<constant name="struts.convention.action.mapAllMatches" value="true"/>
+	<!-- <constant name="struts.convention.default.parent.package" value="rest-default"/> -->
+	<constant name="struts.convention.default.parent.package" value="rest-showcase"/>
+	<constant name="struts.convention.package.locators" value="exp"/>
+	
+	<constant name="struts.mapper.class" value="org.apache.struts2.dispatcher.mapper.PrefixBasedActionMapper"/>
+	<constant name="struts.mapper.prefixMapping" value="/api:rest,:struts"/>
+	
+	<!-- <constant name="struts.rest.namespace" value="/api" /> -->
+	<!-- 下面的重定义是必须的，namespace必须有，且要放在这里。 不然non-rest, rest不能共存 -->
+	<package name="rest-showcase" namespace="/api" extends="rest-default">
+		<global-allowed-methods>index, show, create, update, destroy, delete, deleteConfirm, edit, editNew</global-allowed-methods>
+	</package>
+	
 	<package name="ian" extends="struts-default">
 		<!-- 手工方式，只需指定bean的id, 优点：没有代码层次的耦合。缺点：配置工作量大 -->
 		<!-- <action name="loginAction" class="loginAction"> -->
