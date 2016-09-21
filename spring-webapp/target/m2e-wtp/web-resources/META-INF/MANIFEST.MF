@@ -1,13 +1,5 @@
-<<<<<<< Upstream, based on origin/master
 Manifest-Version: 1.0
 Built-By: I076453
 Build-Jdk: 1.8.0_102
 Created-By: Maven Integration for Eclipse
 
-=======
-Manifest-Version: 1.0
-Built-By: zhengnan
-Build-Jdk: 1.8.0_51
-Created-By: Maven Integration for Eclipse
-
->>>>>>> 445f0ee update
