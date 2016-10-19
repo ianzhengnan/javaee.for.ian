@@ -113,13 +113,14 @@ public class ArticleController extends ValidationAwareSupport implements ModelDr
 	}
 
 	public void validate() {
-		if (article.getSubject() == null || article.getSubject().length() == 0) {
-			addFieldError("subject", "The subject is empty");
-		}
+            if (article.getSubject() == null || article.getSubject().length() == 0) {
+                    addFieldError("subject", "The subject is empty");
+            }
 	}
 
 	public Object getModel() {
-		return (list != null ? list : article);
+            
+            return (list != null ? list : article);
 	}
 
 	public String get_method() {
